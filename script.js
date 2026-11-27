@@ -50,7 +50,7 @@ document.addEventListener('keydown', (event) => { if (!galleryModal?.classList.c
 
 const beerCarousel = document.querySelector('.beer-grid');
 const beerCards = [...document.querySelectorAll('.beer-card')];
-if (beerCarousel && beerCards.length) {
+if (beerCarousel && beerCards.length && !window.matchMedia('(max-width: 800px)').matches) {
   const getBeerStep = () => {
     if (window.matchMedia('(max-width: 800px)').matches) {
       const cardWidth = beerCards[0].getBoundingClientRect().width;
