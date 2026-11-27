@@ -1,0 +1,5 @@
+.beer-card::before{display:none!important}
+.beer-cta{display:none!important}
+.beer-card:hover .beer-visual,.beer-card:focus-visible .beer-visual{outline:none!important;border-color:#fff!important;box-shadow:none!important}
+.beer-card:hover .beer-visual img,.beer-card:focus-visible .beer-visual img{filter:none!important}
+.beer-card:hover h3,.beer-card:focus-visible h3{color:var(--gold)!important;text-shadow:none!important}

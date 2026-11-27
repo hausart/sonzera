@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Novidades, histórias e dicas do Sonzera Beer Pub." />
+    <meta name="sonzera-blog-api" content="" />
+    <title>Blog — Sonzera Beer Pub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="overrides.css" />
+    <link rel="stylesheet" href="final-overrides.css" />
+    <link rel="stylesheet" href="interactions.css" />
+    <link rel="stylesheet" href="blog-page.css" />
+  </head>
+  <body class="blog-page">
+    <header class="site-header"><div class="header-inner"><a class="brand" href="index.html#top" aria-label="Sonzera Beer Pub"><img src="assets/logo.svg" alt="Sonzera Beer Pub" /></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav id="primary-nav" class="primary-nav" aria-label="Navegação principal"><a href="index.html#o-pub">O PUB</a><a href="index.html#cervejas">CERVEJAS</a><a href="https://pedido.anota.ai/loja/drack-beer-ltda?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;utm_id=97760_v0_s00_e0_tv3" target="_blank" rel="noreferrer">CARDÁPIO</a><a href="index.html#agenda">AGENDA</a><a href="blog.html" aria-current="page">BLOG</a><a href="index.html#contato">CONTATO</a></nav></div></header>
+    <main>
+      <section class="blog-hero"><p class="eyebrow">Blog</p><h1>Novidades do Sonzera</h1><p>Quer conhecer mais sobre cerveja artesanal e nosso pub? Acompanhe as atualizações da nossa casa.</p></section>
+      <section class="blog-feed" aria-labelledby="blog-feed-title"><div class="blog-toolbar"><div><p class="eyebrow">Da nossa fábrica-bar</p><h2 id="blog-feed-title">Histórias para brindar</h2></div><p class="blog-source" id="blog-source">Atualizado pelo Sonzera</p></div><div id="blog-status" class="blog-status" role="status" aria-live="polite">Carregando novidades…</div><div class="post-grid blog-post-grid" id="blog-list"></div><button class="button blog-more" id="blog-more" type="button" hidden>Carregar mais</button></section>
+      <section class="blog-reading" id="blog-reading" aria-live="polite" hidden><a class="blog-back" href="blog.html">← Voltar para o blog</a><article id="blog-article"></article></section>
+    </main>
+    <footer><img src="assets/logo-footer.svg" alt="Sonzera Beer Pub" /><p>Todos os direitos reservados a Sonzera Beer Pub @ 2023.</p></footer>
+    <script>
+      const nav = document.querySelector('.primary-nav'); const menuButton = document.querySelector('.menu-toggle');
+      menuButton.addEventListener('click', () => { const open = nav.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(open)); });
+      const API_URL = document.querySelector('meta[name="sonzera-blog-api"]').content.trim() || window.SONZERA_BLOG_API_URL || '';
+      const list = document.querySelector('#blog-list'); const status = document.querySelector('#blog-status'); const more = document.querySelector('#blog-more'); const reading = document.querySelector('#blog-reading'); const article = document.querySelector('#blog-article'); const source = document.querySelector('#blog-source');
+      let posts = []; let visiblePosts = 6;
+      const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char]);
+      const slugify = (value = '') => String(value).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      const normalize = (payload) => { const rows = Array.isArray(payload) ? payload : (payload.posts || payload.data || payload.rows || []); return rows.filter(Boolean).map((post) => ({ slug: post.slug || slugify(post.title), title: post.title || 'Novidade do Sonzera', excerpt: post.excerpt || post.resumo || '', content: post.content || post.conteudo || post.excerpt || '', image: post.image || post.imagem || '', date: post.date || post.data || '', category: post.category || post.categoria || 'Sonzera', url: post.url || '' })); };
+      const formatDate = (value) => { if (!value) return ''; const date = new Date(value); return Number.isNaN(date.getTime()) ? value : date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }); };
+      const card = (post) => `<a class="blog-post-card" href="blog.html?slug=${encodeURIComponent(post.slug)}"><div class="blog-card-media"${post.image ? ` style="background-image:url('${escapeHtml(post.image)}')"` : ''}><span>${escapeHtml(post.category)}</span></div><div class="blog-card-copy"><p class="blog-date">${escapeHtml(formatDate(post.date))}</p><h3>${escapeHtml(post.title)}</h3><p>${escapeHtml(post.excerpt)}</p><span class="blog-read">Ler matéria</span></div></a>`;
+      const renderList = () => { list.innerHTML = posts.slice(0, visiblePosts).map(card).join(''); more.hidden = visiblePosts >= posts.length; status.hidden = posts.length > 0; };
+      const renderArticle = (post) => { reading.hidden = false; document.title = `${post.title} — Sonzera Beer Pub`; article.innerHTML = `<p class="eyebrow">${escapeHtml(post.category)}</p><p class="blog-date">${escapeHtml(formatDate(post.date))}</p><h1>${escapeHtml(post.title)}</h1>${post.image ? `<img class="blog-article-image" src="${escapeHtml(post.image)}" alt="" />` : ''}<div class="blog-article-content">${escapeHtml(post.content).replace(/\n/g, '<br><br>')}</div>`; document.querySelector('.blog-feed').hidden = true; window.scrollTo({ top: 0, behavior: 'smooth' }); };
+      const load = async () => { try { let payload; if (API_URL) { const response = await fetch(API_URL, { headers: { Accept: 'application/json' } }); if (!response.ok) throw new Error('API'); payload = await response.json(); source.textContent = 'Atualizado pela planilha'; } else { payload = await fetch('blog-data.json').then((response) => response.json()); source.textContent = 'Conteúdo de demonstração'; } posts = normalize(payload); renderList(); const requested = new URLSearchParams(window.location.search).get('slug'); const selected = requested && posts.find((post) => post.slug === requested); if (selected) renderArticle(selected); if (!posts.length) { status.hidden = false; status.textContent = 'Nenhuma novidade publicada ainda.'; } } catch (error) { status.hidden = false; status.textContent = API_URL ? 'Não foi possível carregar a planilha. Exibindo conteúdo local.' : 'Não foi possível carregar as novidades.'; if (API_URL) { posts = normalize(await fetch('blog-data.json').then((response) => response.json())); renderList(); } } };
+      more.addEventListener('click', () => { visiblePosts += 6; renderList(); }); load();
+    </script>
+  </body>
+</html>

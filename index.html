@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sonzera Beer Pub — cerveja artesanal e música em Mongaguá." />
+    <title>Sonzera Beer Pub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="overrides.css" />
+    <link rel="stylesheet" href="final-overrides.css" />
+    <link rel="stylesheet" href="interactions.css" />
+    <link rel="stylesheet" href="motion-overrides.css" />
+    <link rel="stylesheet" href="motion-safe.css" />
+    <link rel="stylesheet" href="interaction-final.css" />
+    <link rel="stylesheet" href="mobile-overrides.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="Sonzera Beer Pub">
+          <img src="assets/logo.svg" alt="Sonzera Beer Pub" />
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+        <nav id="primary-nav" class="primary-nav" aria-label="Navegação principal">
+          <a href="#o-pub">O PUB</a>
+          <a href="#cervejas">CERVEJAS</a>
+          <a href="https://pedido.anota.ai/loja/drack-beer-ltda?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;utm_id=97760_v0_s00_e0_tv3" target="_blank" rel="noreferrer">CARDÁPIO</a>
+          <a href="#radio">RÁDIO SONZERA</a>
+          <a href="#contato">CONTATO</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Sonzera Beer Pub">
+      </section>
+
+      <section class="about section" id="o-pub">
+        <div class="about-copy">
+          <h1>O Pub</h1>
+          <p>Da união de duas paixões nasceu o Sonzera Beer Pub: cerveja artesanal e música! Aqui, na primeira cervejaria artesanal de Mongaguá, você encontra uma grande variedade de chopps de produção própria, porções únicas e lanches assinados, drinks alternativos e exclusivos, música ao vivo aos finais de semana, além de um ambiente climatizado, familiar e acolhedor.</p>
+          <img class="hop-illustration" src="assets/hop.svg" alt="Ilustração de lúpulo" />
+        </div>
+        <div class="about-image" role="img" aria-label="Copo de cerveja Sonzera"></div>
+      </section>
+
+      <section class="hours section">
+        <p class="eyebrow">Horários</p>
+        <p>Nosso funcionamento é de terça-feira a sábado, a partir das 17h. Fique por dentro dos eventos, novidades<br class="desktop-only" /> e promoções acessando nosso Instagram:</p>
+        <a class="button" href="https://www.instagram.com/sonzerabeerpub/" target="_blank" rel="noreferrer">Acesse o Instagram</a>
+      </section>
+
+      <section class="gallery" aria-label="Galeria Sonzera">
+        <div class="gallery-track">
+          <img src="assets/gallery-1.jpg" alt="Clientes no Sonzera Beer Pub" data-gallery="Clientes no Sonzera Beer Pub" />
+          <img src="assets/gallery-2.jpg" alt="Ambiente do Sonzera Beer Pub" data-gallery="Ambiente do Sonzera Beer Pub" />
+          <img src="assets/gallery-3.jpeg" alt="Cerveja e decoração do pub" data-gallery="Cerveja e decoração do pub" />
+          <img src="assets/gallery-4.jpeg" alt="Chopp sendo servido" data-gallery="Chopp sendo servido" />
+          <img src="assets/gallery-5.jpg" alt="Cerveja e porção do Sonzera" data-gallery="Cerveja e porção do Sonzera" />
+          <img src="assets/copo.jpg" alt="Copo de cerveja Sonzera" data-gallery="Copo de cerveja Sonzera" />
+        </div>
+        <button class="gallery-arrow gallery-prev" type="button" aria-label="Imagem anterior">‹</button>
+        <button class="gallery-arrow gallery-next" type="button" aria-label="Próxima imagem">›</button>
+      </section>
+      <div class="gallery-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="gallery-modal-caption"><button class="gallery-modal-close" type="button" aria-label="Fechar imagem">×</button><button class="gallery-modal-prev" type="button" aria-label="Imagem anterior">‹</button><figure><img class="gallery-modal-image" src="assets/gallery-1.jpg" alt="" /><figcaption id="gallery-modal-caption"></figcaption></figure><button class="gallery-modal-next" type="button" aria-label="Próxima imagem">›</button></div>
+
+      <section class="beers section dark" id="cervejas">
+        <div class="section-intro">
+          <p class="eyebrow">Cervejas</p>
+          <h2>Uma TAP com personalidade.</h2>
+          <p>Nossa TAP tem, atualmente, nove bicos onde se revezam os mais diversos estilos de cervejas artesanais autorais. A cada mês temos novidades!</p>
+        </div>
+        <div class="beer-carousel">
+          <button class="beer-carousel-arrow beer-carousel-prev" type="button" aria-label="Cerveja anterior">‹</button>
+          <div class="beer-grid">
+          <a href="#cervejas" class="beer-card beer-pilsen" data-beer="Pilsen"><div class="beer-visual"><img src="assets/pilsen.jpg" alt="Cerveja Pilsen" /><span class="beer-fill" aria-hidden="true"></span></div><h3>Pilsen</h3><p>A Pilsen Sonzera é triplo malte, tem cor dourada, sabor equilibrado com baixo amargor, conferindo uma drinkability suave até para os apreciadores de pilsen mais exigentes. ABV 5% / IBU 16.</p></a>
+          <a href="#cervejas" class="beer-card beer-lager" data-beer="Lager Premium"><div class="beer-visual"><img src="assets/lager.jpg" alt="Cerveja Lager Premium" /><span class="beer-fill" aria-hidden="true"></span></div><h3>Lager Premium</h3><p>Nossa Lager Premium é uma triplo malte com sabor sem igual. Um chopp claro, leve e com baixíssimo amargor e característica maltada marcante. ABV 5,3% / IBU 14.</p></a>
+          <a href="#cervejas" class="beer-card beer-cream" data-beer="Cream Ale"><div class="beer-visual"><img src="assets/creame.jpg" alt="Cerveja Cream Ale" /><span class="beer-fill" aria-hidden="true"></span></div><h3>Cream Ale</h3><p>A Cream Ale Sonzera é leve, refrescante e tem sabor suave. Possui cor dourada clara e uma carbonatação moderada. ABV 5,1% / IBU 15.</p></a>
+          <a href="#cervejas" class="beer-card beer-apa" data-beer="American Pale Ale"><div class="beer-visual"><img src="assets/apa.jpg" alt="Cerveja American Pale Ale" /><span class="beer-fill" aria-hidden="true"></span></div><h3>American Pale Ale</h3><p>A APA Sonzera tem características equilibradas e sabores cítricos e frutados provenientes do lúpulo. Tem coloração âmbar, teor alcoólico moderado e amargor perceptível. ABV 6,1% / IBU 49,4.</p></a>
+          <a href="#cervejas" class="beer-card beer-ipa" data-beer="American IPA"><div class="beer-visual"><img src="assets/ipa.jpg" alt="Cerveja American IPA" /><span class="beer-fill" aria-hidden="true"></span></div><h3>American IPA</h3><p>Lúpulos em grandes quantidades são a marca registrada da nossa American IPA. Frutada, terrosa, maltada e intensa, harmoniza com alimentos fortes e condimentados. ABV 7,3% / IBU 69.</p></a>
+          <a href="#cervejas" class="beer-card beer-ohanalu" data-beer="Ohanalu – Session IPA"><div class="beer-visual"><img src="assets/ohanalu.jpg" alt="Cerveja Ohanalu Session IPA" /><span class="beer-fill" aria-hidden="true"></span></div><h3>Ohanalu – Session IPA</h3><p>Uma IPA leve, de baixo amargor, mas com aroma frutado e levemente cítrico. Desenvolvida especialmente para o Hostel Ohanalu. ABV 4,4% / IBU 28,6.</p></a>
+          <a href="#cervejas" class="beer-card beer-english beer-card-last" data-beer="English Pale Ale"><div class="beer-visual"><img src="assets/english.jpg" alt="Cerveja English Pale Ale" /><span class="beer-fill" aria-hidden="true"></span></div><h3>English Pale Ale</h3><p>O equilíbrio perfeito entre o malte e o lúpulo, com notas de caramelo, frutas, herbal e terroso. ABV 6% / IBU 37.</p></a>
+          </div>
+          <button class="beer-carousel-arrow beer-carousel-next" type="button" aria-label="Próxima cerveja">›</button>
+        </div>
+      </section>
+
+
+      <section class="banner banner-pets" aria-label="Pet friendly"><img src="assets/banner1.jpg" alt="No Sonzera seu pet é nosso convidado" /></section>
+
+      <section class="agenda section" id="radio">
+        <div class="agenda-copy"><p class="eyebrow">Rádio Sonzera</p><h2>A trilha sonora da casa.</h2><p>Como o próprio nome do pub já entrega, a música é parte importante da nossa essência. Ouça a seleção do Sonzera, descubra novos sons e deixe a trilha da casa acompanhar o seu momento.</p><iframe class="spotify-embed" title="Rádio Sonzera no Spotify" src="https://open.spotify.com/embed/playlist/6Y6r0gj87f8nn8DjveuwQ0?utm_source=generator&theme=0" width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+        <div class="agenda-image"><img src="assets/agenda2.jpg" alt="Pessoa ouvindo a Rádio Sonzera com fones amarelos" /><a class="button" href="https://open.spotify.com/playlist/6Y6r0gj87f8nn8DjveuwQ0" target="_blank" rel="noreferrer">Ouça a rádio</a></div>
+      </section>
+
+      <section class="banner banner-music" aria-label="Música no Sonzera"><img src="assets/banner2.jpg" alt="Música no Sonzera" /></section>
+
+      <section class="delivery" aria-label="Delivery"><div class="delivery-image"></div><div><p class="eyebrow">Delivery</p><h2>Em breve, na sua casa.</h2><p>Em breve, entregaremos a cerveja mais saborosa de Mongaguá em sua casa.</p></div></section>
+
+      <section class="contact section dark" id="contato"><p class="eyebrow centered">Contato</p><div class="contact-grid"><a href="tel:+5513978018904"><span class="contact-icon icon-phone" aria-hidden="true"></span><h3>Contato</h3><p>(13) 97801-8904</p></a><a href="mailto:sonzerabeerpub@gmail.com"><span class="contact-icon icon-mail" aria-hidden="true"></span><h3>E-mail</h3><p>sonzerabeerpub@gmail.com</p></a><div><span class="contact-icon icon-clock" aria-hidden="true"></span><h3>Horários</h3><p>De terça a sábado, abertura às 17h.</p></div><div><span class="contact-icon icon-map" aria-hidden="true"></span><h3>Endereço</h3><p>Avenida Olindo Tamagnini, 155, Centro – Mongaguá/SP</p></div><a href="https://www.instagram.com/sonzerabeerpub/" target="_blank" rel="noreferrer"><span class="contact-icon icon-social" aria-hidden="true"></span><h3>Instagram</h3><p>@sonzerabeerpub</p></a></div></section>
+    </main>
+
+    <footer><img src="assets/logo-footer.svg" alt="Sonzera Beer Pub" /><p>Todos os direitos reservados a Sonzera Beer Pub @ 2023.</p></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
