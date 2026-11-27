@@ -1,5 +1,10 @@
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.primary-nav');
+const siteHeader = document.querySelector('.site-header');
+
+const syncHeaderState = () => siteHeader?.classList.toggle('is-scrolled', window.scrollY > 24);
+window.addEventListener('scroll', syncHeaderState, { passive: true });
+syncHeaderState();
 
 const heroSlides = [...document.querySelectorAll('.hero-slide')];
 const heroDots = [...document.querySelectorAll('.hero-dot')];
