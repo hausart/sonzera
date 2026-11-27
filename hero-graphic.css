@@ -80,17 +80,17 @@
 }
 
 .hero-graphic-illustration {
-  left: 2%;
+  left: 5%;
   bottom: 0;
-  width: min(56%, 760px);
+  width: min(58%, 840px);
   max-height: 94%;
   object-position: bottom left;
 }
 
 .hero-graphic-message {
   top: 50%;
-  right: 7%;
-  width: min(40%, 560px);
+  right: 12%;
+  width: min(46%, 680px);
   max-height: 72%;
   transform: translateY(-50%);
 }
