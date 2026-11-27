@@ -235,4 +235,9 @@
     border-radius: 0;
     background-position: center;
   }
+
+  .footer-credit {
+    margin-top: 10px;
+    font-size: 14px;
+  }
 }
