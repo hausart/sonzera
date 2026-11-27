@@ -2,15 +2,23 @@ const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.primary-nav');
 
 const heroSlides = [...document.querySelectorAll('.hero-slide')];
+const heroDots = [...document.querySelectorAll('.hero-dot')];
 if (heroSlides.length > 1) {
   let heroIndex = 0;
-  window.setInterval(() => {
+  const setHeroSlide = (index) => {
     heroSlides[heroIndex].classList.remove('is-active');
     heroSlides[heroIndex].setAttribute('aria-hidden', 'true');
-    heroIndex = (heroIndex + 1) % heroSlides.length;
+    heroIndex = (index + heroSlides.length) % heroSlides.length;
     heroSlides[heroIndex].classList.add('is-active');
     heroSlides[heroIndex].setAttribute('aria-hidden', 'false');
-  }, 7000);
+    heroDots.forEach((dot, dotIndex) => {
+      const active = dotIndex === heroIndex;
+      dot.classList.toggle('is-active', active);
+      dot.setAttribute('aria-pressed', String(active));
+    });
+  };
+  heroDots.forEach((dot, index) => dot.addEventListener('click', () => setHeroSlide(index)));
+  window.setInterval(() => setHeroSlide(heroIndex + 1), 7000);
 }
 
 menuButton?.addEventListener('click', () => {

@@ -22,6 +22,35 @@
   pointer-events: auto;
 }
 
+.hero-dots {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: 22px;
+  display: flex;
+  gap: 9px;
+  transform: translateX(-50%);
+}
+
+.hero-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: transform .25s ease, background-color .25s ease, border-color .25s ease;
+}
+
+.hero-dot.is-active,
+.hero-dot:hover,
+.hero-dot:focus-visible {
+  border-color: var(--gold-light);
+  background: var(--gold-light);
+  transform: scale(1.35);
+}
+
 .hero-stage > .hero {
   min-height: 0;
   height: 100%;
@@ -68,9 +97,9 @@
 
 @media (max-width: 800px) {
   .hero-stage {
-    height: 58svh;
-    min-height: 390px;
-    max-height: 560px;
+    height: calc(100svh - 72px);
+    min-height: 590px;
+    max-height: 820px;
   }
 
   .hero-graphic-inner {
@@ -78,16 +107,20 @@
   }
 
   .hero-graphic-message {
-    top: 34%;
-    right: 8%;
-    width: 52%;
-    max-height: 48%;
+    top: 4%;
+    right: 50%;
+    width: min(86%, 390px);
+    max-height: 42%;
+    transform: translateX(50%);
   }
 
   .hero-graphic-illustration {
-    left: 0;
+    left: 50%;
     bottom: 0;
-    width: 70%;
-    max-height: 70%;
+    width: 100%;
+    max-height: 72%;
+    transform: translateX(-50%);
   }
+
+  .hero-dots { bottom: 18px; }
 }
