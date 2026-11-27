@@ -241,3 +241,12 @@
     font-size: 14px;
   }
 }
+
+footer p {
+  margin: 0;
+  line-height: 1.35;
+}
+
+footer p + p {
+  margin-top: 4px;
+}
