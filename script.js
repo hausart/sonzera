@@ -1,6 +1,18 @@
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.primary-nav');
 
+const heroSlides = [...document.querySelectorAll('.hero-slide')];
+if (heroSlides.length > 1) {
+  let heroIndex = 0;
+  window.setInterval(() => {
+    heroSlides[heroIndex].classList.remove('is-active');
+    heroSlides[heroIndex].setAttribute('aria-hidden', 'true');
+    heroIndex = (heroIndex + 1) % heroSlides.length;
+    heroSlides[heroIndex].classList.add('is-active');
+    heroSlides[heroIndex].setAttribute('aria-hidden', 'false');
+  }, 7000);
+}
+
 menuButton?.addEventListener('click', () => {
   const open = nav.classList.toggle('open');
   menuButton.setAttribute('aria-expanded', String(open));

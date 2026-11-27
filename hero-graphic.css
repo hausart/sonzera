@@ -1,3 +1,33 @@
+.hero-stage {
+  position: relative;
+  min-height: 64vh;
+  height: 64vh;
+  max-height: 720px;
+  overflow: hidden;
+  background: #111;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 1.2s ease, visibility 1.2s ease;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.hero-stage > .hero {
+  min-height: 0;
+  height: 100%;
+  max-height: none;
+}
+
 .hero-graphic {
   background: #111;
   color: #fff;
@@ -5,51 +35,59 @@
 }
 
 .hero-graphic-inner {
-  width: min(1440px, 100%);
-  min-height: min(56vw, 760px);
+  position: relative;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
-  padding: 48px clamp(24px, 6vw, 96px) 20px;
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr);
-  align-items: end;
-  gap: clamp(24px, 5vw, 90px);
+  padding: 0 clamp(24px, 6vw, 96px);
 }
 
 .hero-graphic-illustration,
 .hero-graphic-message {
+  position: absolute;
   display: block;
-  width: 100%;
   height: auto;
-  max-height: 680px;
   object-fit: contain;
 }
 
 .hero-graphic-illustration {
-  align-self: end;
+  left: 2%;
+  bottom: 0;
+  width: min(56%, 760px);
+  max-height: 94%;
+  object-position: bottom left;
 }
 
 .hero-graphic-message {
-  max-width: 540px;
-  justify-self: center;
-  margin-bottom: 4%;
+  top: 50%;
+  right: 7%;
+  width: min(40%, 560px);
+  max-height: 72%;
+  transform: translateY(-50%);
 }
 
 @media (max-width: 800px) {
+  .hero-stage {
+    height: 58svh;
+    min-height: 390px;
+    max-height: 560px;
+  }
+
   .hero-graphic-inner {
-    min-height: 0;
-    padding: 30px 22px 18px;
-    grid-template-columns: 1fr;
-    gap: 4px;
+    padding: 0 14px;
   }
 
   .hero-graphic-message {
-    order: -1;
-    width: min(100%, 390px);
-    margin: 0 auto;
+    top: 34%;
+    right: 8%;
+    width: 52%;
+    max-height: 48%;
   }
 
   .hero-graphic-illustration {
-    width: min(100%, 420px);
-    margin: 0 auto;
+    left: 0;
+    bottom: 0;
+    width: 70%;
+    max-height: 70%;
   }
 }
